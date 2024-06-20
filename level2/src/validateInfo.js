@@ -11,10 +11,10 @@ export default function validateInfo(values) {
       errors.email = 'Email address is invalid';
     }
   
-    if (!values.age) {
-      errors.age = 'Age is required';
-    } else if (values.age <= 0) {
-      errors.age = 'Age must be greater than 0';
+    if (!values.phoneNumber) {
+      errors.phoneNumber = 'Phone Number is required';
+    } else if (values.phoneNumber.length != 10) {
+      errors.phoneNumber = 'Phone Number must contains 10 digits';
     }
   
     if (values.attendingWithGuest === 'Yes' && !values.guestName.trim()) {

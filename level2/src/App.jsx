@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className=" max-w-xl mx-auto p-6 bg-white shadow-md rounded-md mt-[40px]">
       {!values.submitted && <form onSubmit={handleSubmit} noValidate>
-        <h1 className="text-xl font-bold mb-4">Level 1</h1>
+        <h1 className="text-xl font-bold mb-4">Level 2</h1>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Name
@@ -40,47 +40,33 @@ const App = () => {
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
         <div className="mb-4">
-          <label htmlFor="age" className="block text-sm font-medium text-gray-700">
-            Age
+          <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
+            Phone Number
           </label>
           <input
-            id="age"
+            id="phoneNumber"
             type="number"
-            name="age"
+            name="phoneNumber"
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            placeholder="Enter your age"
-            value={values.age}
+            placeholder="Enter your Phone Number"
+            value={values.phoneNumber}
             onChange={handleChange}
           />
-          {errors.age && <p className="text-red-500 text-xs mt-1">{errors.age}</p>}
+          {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Are you attending with a guest?</label>
-          <div className="mt-1 flex items-center">
-            <input
-              type="radio"
-              id="attending-yes"
-              name="attendingWithGuest"
-              value="Yes"
-              checked={values.attendingWithGuest === 'Yes'}
+          <label className="block text-sm font-medium text-gray-700">Applying for Position</label>
+          <div className='mt-1 flex items-center'>
+            <select
+              value={values.position}
               onChange={handleChange}
-              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-            />
-            <label htmlFor="attending-yes" className="ml-3 block text-sm font-medium text-gray-700">
-              Yes
-            </label>
-            <input
-              type="radio"
-              id="attending-no"
-              name="attendingWithGuest"
-              value="No"
-              checked={values.attendingWithGuest === 'No'}
-              onChange={handleChange}
-              className="ml-4 focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
-            />
-            <label htmlFor="attending-no" className="ml-3 block text-sm font-medium text-gray-700">
-              No
-            </label>
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              name='position'
+            >
+              <option value="developer">Developer</option>
+              <option value="designer">Designer</option>
+              <option value="manager">Manager</option>
+            </select>
           </div>
         </div>
         {values.attendingWithGuest === 'Yes' && (
@@ -112,7 +98,7 @@ const App = () => {
           <h2 className="text-lg font-medium mb-2">Form Submission Summary</h2>
           <p className="text-sm text-gray-700">Name: {values.name}</p>
           <p className="text-sm text-gray-700">Email: {values.email}</p>
-          <p className="text-sm text-gray-700">Age: {values.age}</p>
+          <p className="text-sm text-gray-700">Phone Number: {values.phoneNumber}</p>
           <p className="text-sm text-gray-700">Attending with guest: {values.attendingWithGuest}</p>
           {values.attendingWithGuest === 'Yes' && <p className="text-sm text-gray-700">Guest Name: {values.guestName}</p>}
         </div>

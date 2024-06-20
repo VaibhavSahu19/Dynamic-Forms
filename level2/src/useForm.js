@@ -4,8 +4,8 @@ const useForm = (validate) => {
   const [values, setValues] = useState({
     name: '',
     email: '',
-    age: '',
-    attendingWithGuest: 'No',
+    phoneNumber: '',
+    position: 'developer',
     guestName: '',
     submitted: false,
   });
@@ -13,10 +13,10 @@ const useForm = (validate) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value} = e.target;
     setValues({
       ...values,
-      [name]: type === 'radio' ? (checked ? value : values[name]) : value,
+      [name]: value,
     });
   };
 
