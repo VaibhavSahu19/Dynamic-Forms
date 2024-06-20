@@ -16,9 +16,31 @@ export default function validateInfo(values) {
     } else if (values.phoneNumber.length != 10) {
       errors.phoneNumber = 'Phone Number must contains 10 digits';
     }
+
+    if(!values.position || values.position === '-Select-'){
+      errors.position = 'Select valid position';
+    }
   
-    if (values.attendingWithGuest === 'Yes' && !values.guestName.trim()) {
-      errors.guestName = 'Guest Name is required';
+    if ((values.position === 'Designer' || values.position === 'Developer') && !values.experience > 0) {
+      errors.experience = 'At least 1 Year experience is required';
+    }
+
+    if(values.position === 'Designer'){
+      const pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); 
+      
+      const check = pattern.test(values.portfolio);
+      if(!values.portfolio || !check){
+        errors.portfolio = 'Please enter a valid URL';
+      }
+    }
+
+    if(values.position === 'Manager' && (!values.managerialExperience || values.managerialExperience < 1)){
+      errors.managerialExperience = 'At least 1 Year of Managerial Experience is required';
     }
   
     return errors;

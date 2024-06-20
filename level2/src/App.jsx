@@ -63,27 +63,63 @@ const App = () => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               name='position'
             >
-              <option value="developer">Developer</option>
-              <option value="designer">Designer</option>
-              <option value="manager">Manager</option>
+              <option>-Select-</option>
+              <option value="Developer">Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="Manager">Manager</option>
             </select>
           </div>
+          {errors.position && <p className="text-red-500 text-xs mt-1">{errors.position}</p>}
         </div>
-        {values.attendingWithGuest === 'Yes' && (
+        {(values.position === 'Designer' || values.position === 'Developer') && (
           <div className="mb-4">
-            <label htmlFor="guestName" className="block text-sm font-medium text-gray-700">
-              Guest Name
+            <label htmlFor="experience" className="block text-sm font-medium text-gray-700">
+              Experience
             </label>
             <input
-              id="guestName"
-              type="text"
-              name="guestName"
+              id="experience"
+              type="number"
+              name="experience"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Enter guest name"
-              value={values.guestName}
+              placeholder="Enter experience in Years"
+              value={values.experience}
               onChange={handleChange}
             />
-            {errors.guestName && <p className="text-red-500 text-xs mt-1">{errors.guestName}</p>}
+            {errors.experience && <p className="text-red-500 text-xs mt-1">{errors.experience}</p>}
+          </div>
+        )}
+        {(values.position === 'Designer') && (
+          <div className="mb-4">
+            <label htmlFor="portfolio" className="block text-sm font-medium text-gray-700">
+              Portfolio URL
+            </label>
+            <input
+              id="portfolio"
+              type="text"
+              name="portfolio"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="https://www.example.com"
+              value={values.portfolio}
+              onChange={handleChange}
+            />
+            {errors.portfolio && <p className="text-red-500 text-xs mt-1">{errors.portfolio}</p>}
+          </div>
+        )}
+        {(values.position === 'Manager') && (
+          <div className="mb-4">
+            <label htmlFor="managerialExperience" className="block text-sm font-medium text-gray-700">
+              Managerial Experience
+            </label>
+            <input
+              id="managerialExperience"
+              type="number"
+              name="managerialExperience"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter Managerial Experience in Years"
+              value={values.managerialExperience}
+              onChange={handleChange}
+            />
+            {errors.managerialExperience && <p className="text-red-500 text-xs mt-1">{errors.managerialExperience}</p>}
           </div>
         )}
         <button

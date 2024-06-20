@@ -5,8 +5,10 @@ const useForm = (validate) => {
     name: '',
     email: '',
     phoneNumber: '',
-    position: 'developer',
-    guestName: '',
+    position: '',
+    experience: '',
+    portfolio: '',
+    managerialExperience: '',
     submitted: false,
   });
   const [errors, setErrors] = useState({});
