@@ -9,17 +9,36 @@ const useForm = (validate) => {
     experience: '',
     portfolio: '',
     managerialExperience: '',
+    additionalSkills: [],
     submitted: false,
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value} = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    const { name, value, type, checked } = e.target;
+
+    if (type === 'checkbox') {
+      // For checkboxes, handle the checked state
+      if (checked) {
+        setValues({
+          ...values,
+          additionalSkills: [...values.additionalSkills, value], // Add to array
+        });
+      } else {
+        // Remove from array if unchecked
+        setValues({
+          ...values,
+          additionalSkills: values.additionalSkills.filter((skill) => skill !== value),
+        });
+      }
+    } else {
+      // For other input types (text, select), directly update the state
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = (e) => {
