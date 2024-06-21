@@ -42,6 +42,10 @@ export default function validateInfo(values) {
     if(values.position === 'Manager' && (!values.managerialExperience || values.managerialExperience < 1)){
       errors.managerialExperience = 'At least 1 Year of Managerial Experience is required';
     }
+
+    if(values.additionalSkills.length === 0){
+      errors.additionalSkills = 'At least 1 skill is required';
+    }
   
     return errors;
   }

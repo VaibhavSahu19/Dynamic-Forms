@@ -19,21 +19,18 @@ const useForm = (validate) => {
     const { name, value, type, checked } = e.target;
 
     if (type === 'checkbox') {
-      // For checkboxes, handle the checked state
       if (checked) {
         setValues({
           ...values,
-          additionalSkills: [...values.additionalSkills, value], // Add to array
+          additionalSkills: [...values.additionalSkills, value], 
         });
       } else {
-        // Remove from array if unchecked
         setValues({
           ...values,
           additionalSkills: values.additionalSkills.filter((skill) => skill !== value),
         });
       }
     } else {
-      // For other input types (text, select), directly update the state
       setValues({
         ...values,
         [name]: value,

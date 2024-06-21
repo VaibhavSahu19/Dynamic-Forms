@@ -180,8 +180,30 @@ const App = () => {
               />
               <span className="ml-1 text-sm text-gray-700">Python</span>
             </label>
-            {/* Add more checkboxes as needed */}
+            <label className="inline-flex items-center">
+              <input
+                type="checkbox"
+                name="Java"
+                value="Java"
+                checked={values.additionalSkills.includes('Java')}
+                onChange={handleChange}
+                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              />
+              <span className="ml-1 text-sm text-gray-700">Java</span>
+            </label>
+            <label className="inline-flex items-center">
+              <input
+                type="checkbox"
+                name="C++"
+                value="C++"
+                checked={values.additionalSkills.includes('C++')}
+                onChange={handleChange}
+                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+              />
+              <span className="ml-1 text-sm text-gray-700">C++</span>
+            </label>
           </div>
+          {errors.additionalSkills && <p className="text-red-500 text-xs mt-1">{errors.additionalSkills}</p>}
         </div>
         <button
           className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
