@@ -10,6 +10,7 @@ const useForm = (validate) => {
     portfolio: '',
     managerialExperience: '',
     additionalSkills: [],
+    dateAndTime: '',
     submitted: false,
   });
   const [errors, setErrors] = useState({});
@@ -30,7 +31,7 @@ const useForm = (validate) => {
           additionalSkills: values.additionalSkills.filter((skill) => skill !== value),
         });
       }
-    } else {
+    }else {
       setValues({
         ...values,
         [name]: value,
