@@ -4,13 +4,13 @@ const useForm = (validate) => {
   const [values, setValues] = useState({
     name: '',
     email: '',
-    phoneNumber: '',
-    position: '',
+    topic: '',
+    favLanguage: '',
     experience: '',
-    portfolio: '',
-    managerialExperience: '',
-    additionalSkills: [],
-    dateAndTime: '',
+    exercise: '',
+    diet: '',
+    qualification: '',
+    fieldOfStudy: '',
     submitted: false,
   });
   const [errors, setErrors] = useState({});
