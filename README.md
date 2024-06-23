@@ -17,6 +17,6 @@ Open your terminal and run the following command to clone the repository:
 
 ```bash
 git clone "link that you copied"
-cd level 1
+cd level1 or cd level2 or cd level3
 npm i
 npm run dev
