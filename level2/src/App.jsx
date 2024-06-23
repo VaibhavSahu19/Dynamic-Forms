@@ -4,6 +4,24 @@ import validate from './validateInfo';
 
 const App = () => {
   const { handleChange, handleSubmit, values, errors } = useForm(validate);
+
+  const languages = ["NextJS", "ReactJS", "Java", "JavaScript", "Python", "C++", "C#"];
+  const languageDropDown = languages.map((language, index) => {
+    return (
+    <div key={index} className='flex justify-center items-center'>
+      <label className="inline-flex items-center"></label>
+      <input
+        type="checkbox"
+        name={`${language}`}
+        value={`${language}`}
+        checked={values.additionalSkills.includes(`${language}`)}
+        onChange={handleChange}
+        className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+      />
+      <span className="ml-1 text-sm text-gray-700">{language}</span>
+    </div>)
+  })
+
   const formatDateTime = (dateTimeStr) => {
     const date = new Date(dateTimeStr);
     if (isNaN(date.getTime())) {
@@ -146,83 +164,7 @@ const App = () => {
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">Additional Skills</label>
           <div className="mt-[4px] flex justify-start items-center gap-[10px]">
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="ReactJS"
-                value="ReactJS"
-                checked={values.additionalSkills.includes('ReactJS')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">ReactJS</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="NextJS"
-                value="NextJS"
-                checked={values.additionalSkills.includes('NextJS')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">NextJS</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="JavaScript"
-                value="JavaScript"
-                checked={values.additionalSkills.includes('JavaScript')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">JavaScript</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="CSS"
-                value="CSS"
-                checked={values.additionalSkills.includes('CSS')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">CSS</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="Python"
-                value="Python"
-                checked={values.additionalSkills.includes('Python')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">Python</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="Java"
-                value="Java"
-                checked={values.additionalSkills.includes('Java')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">Java</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                name="C++"
-                value="C++"
-                checked={values.additionalSkills.includes('C++')}
-                onChange={handleChange}
-                className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-              />
-              <span className="ml-1 text-sm text-gray-700">C++</span>
-            </label>
+            {languageDropDown}
           </div>
           {errors.additionalSkills && <p className="text-red-500 text-xs mt-1">{errors.additionalSkills}</p>}
         </div>
