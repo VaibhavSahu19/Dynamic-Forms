@@ -40,9 +40,10 @@ const App = () => {
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Survey Topic</label>
+          <label htmlFor='topic' className="block text-sm font-medium text-gray-700">Survey Topic</label>
           <div className='mt-1 flex items-center'>
             <select
+              id='topic'
               value={values.topic}
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -61,14 +62,15 @@ const App = () => {
             <label htmlFor="techSection" className="block text-md font-bold text-gray-700">
               Technology Section
             </label>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Favorite Programming Language</label>
+            <div id='techSection' className="mb-4">
+              <label htmlFor='favLanguage' className="block text-sm font-medium text-gray-700">Favorite Programming Language</label>
               <div className='mt-1 flex items-center'>
                 <select
                   value={values.favLanguage}
                   onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   name='favLanguage'
+                  id='favLanguage'
                 >
                   <option>-Select-</option>
                   <option value="JavaScript">JavaScript</option>
@@ -97,10 +99,11 @@ const App = () => {
             <label htmlFor="healthSection" className="block text-md font-bold text-gray-700">
               Health Section
             </label>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Exercise Frequency</label>
+            <div id='healthSection' className="mb-4">
+              <label htmlFor='exercise' className="block text-sm font-medium text-gray-700">Exercise Frequency</label>
               <div className='mt-1 flex items-center'>
                 <select
+                  id='exercise'
                   value={values.exercise}
                   onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -116,9 +119,10 @@ const App = () => {
               {errors.exercise && <p className="text-red-500 text-xs mt-1">{errors.exercise}</p>}
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700">Diet Preference</label>
+              <label htmlFor='diet' className="block text-sm font-medium text-gray-700">Diet Preference</label>
               <div className='mt-1 flex items-center'>
                 <select
+                  id='diet'
                   value={values.diet}
                   onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -139,7 +143,7 @@ const App = () => {
             <label htmlFor="edSection" className="block text-md font-bold text-gray-700">
               Education Section
             </label>
-            <div className="mb-4">
+            <div id='edSection' className="mb-4">
               <label className="block text-sm font-medium text-gray-700">Highest Qualification</label>
               <div className='mt-1 flex items-center'>
                 <select
@@ -158,18 +162,32 @@ const App = () => {
               {errors.qualification && <p className="text-red-500 text-xs mt-1">{errors.qualification}</p>}
               <label htmlFor="fieldOfStudy" className='block text-sm font-medium text-gray-700 mt-2'>Field of Study</label>
               <input
-              id="fieldOfStudy"
-              type="number"
-              name="fieldOfStudy"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              placeholder="Field of Study"
-              value={values.fieldOfStudy}
-              onChange={handleChange}
-            />
+                id="fieldOfStudy"
+                type="number"
+                name="fieldOfStudy"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="Field of Study"
+                value={values.fieldOfStudy}
+                onChange={handleChange}
+              />
             {errors.fieldOfStudy && <p className="text-red-500 text-xs mt-1">{errors.fieldOfStudy}</p>}
             </div>
           </div>
         )}
+        <div className="mb-4">
+          <label htmlFor="feedback" className='block text-sm font-medium text-gray-700 mt-2'>
+            Feedback
+          </label>
+          <textarea
+            className='mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm h-20'
+            name="feedback" 
+            id="feedback" 
+            value={values.feedback} 
+            onChange={handleChange}
+            placeholder='Enter you feedback here'
+          ></textarea>
+          {errors.feedback && <p className="text-red-500 text-xs mt-1">{errors.feedback}</p>}
+        </div>
         <button
           className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           type="submit"
@@ -182,15 +200,14 @@ const App = () => {
           <h2 className="text-lg font-medium mb-2">Form Submission Summary</h2>
           <p className="text-sm text-gray-700">Name: {values.name}</p>
           <p className="text-sm text-gray-700">Email: {values.email}</p>
-          <p className="text-sm text-gray-700">Phone Number: {values.phoneNumber}</p>
-          <p className="text-sm text-gray-700">Position Applied for: {values.position}</p>
-          {(values.position === 'Developer' || values.position === 'Designer') && <p className="text-sm text-gray-700">Relevant Experience: {values.experience}</p>}
-          {values.position === 'Designer' && <p className="text-sm text-gray-700">Portfolio URL: {values.portfolio}</p>}
-          {values.position === 'Manager'&& <p className="text-sm text-gray-700">Managerial Experience: {values.managerialExperience}</p>}
-          <p className="text-sm text-gray-700">Additional Skills: {values.additionalSkills.map((skill, index) => {
-            return <span key={index}>{skill} </span>
-          })}</p>
-          <p className="text-sm text-gray-700">Preferred Interview Date & Time: {formatDateTime(values.dateAndTime)}</p>
+          <p className="text-sm text-gray-700">Topic: {values.topic}</p>
+          {values.topic === 'Technology' && <p className="text-sm text-gray-700">Favorite Language: {values.favLanguage}</p>}
+          {values.topic === 'Technology' && <p className="text-sm text-gray-700">Experience: {values.experience}</p>}
+          {values.topic === 'Health' && <p className="text-sm text-gray-700">Exercise Frequency: {values.exercise}</p>}
+          {values.topic === 'Health' && <p className="text-sm text-gray-700">Diet Type: {values.diet}</p>}
+          {values.topic === 'Education' && <p className="text-sm text-gray-700">Qualification: {values.qualification}</p>}
+          {values.topic === 'Education' && <p className="text-sm text-gray-700">Field of Study: {values.fieldOfStudy}</p>}
+          
         </div>
       )}
     </div>

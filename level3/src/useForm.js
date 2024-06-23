@@ -11,6 +11,7 @@ const useForm = (validate) => {
     diet: '',
     qualification: '',
     fieldOfStudy: '',
+    feedback: '',
     submitted: false,
   });
   const [errors, setErrors] = useState({});
